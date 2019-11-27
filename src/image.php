@@ -100,7 +100,9 @@ function storeFile(array $post_data, string $cat, string $filename)
     //Prepare target dirs
     prepareDirs();
     //First move original
-    if (!rename($CONFIG['SOURCE_DIR'] . $filename, $CONFIG['TARGET_DIR'] . $cat . '/orig/' . $filename)) {
+    if (copy($CONFIG['SOURCE_DIR'] . $filename, $CONFIG['TARGET_DIR'] . $cat . '/orig/' . $filename)) {
+        unlink($CONFIG['SOURCE_DIR'] . $filename);
+    } else {
         return false;
     }
     //Get dest dir
