@@ -1,9 +1,10 @@
 <?php
 include "src/constants.php";
 include "src/image.php";
-include "config.php";
+include "src/config.php";
 
 if (!empty($_GET)) {
+    global $CONFIG;
     switch ($_GET['c']) {
         //Serve an image
         case 'get_image':
