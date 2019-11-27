@@ -115,6 +115,8 @@ function storeFile(array $post_data, string $cat, string $filename)
         } else {
             return false;
         }
+    } else {
+        return true;
     }
 }
 
