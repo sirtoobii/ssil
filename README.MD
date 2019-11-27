@@ -15,8 +15,8 @@ being a _pretty_ piece of code - it just works and is as simple as possible.
 - Based on [Cropper.js](https://fengyuanchen.github.io/cropperjs/)
 
 ### Usage
-- Clone this repository into a directory which is accessible through an url
-- Edit `config.php`:
+- Clone this repository into a directory
+- Edit `src/config.php`:
 ```php
     'SOURCE_DIR'=> "path_to_source_image_dir",
     'TARGET_DIR' => "path_to_target_dir",
@@ -24,10 +24,14 @@ being a _pretty_ piece of code - it just works and is as simple as possible.
             'c' => "cat1",
             'd' => "cat2",
         );
-    'PROTO' => "https:// or http://"
+    'PROTO' => "'https://' or 'http://' when running local" 
 ```
 - Make sure `SOURCE_DIR` and `TARGET_DIR`is writeable by the webserver user
-- I highly recommend to setup a `Basic Auth` using a `.htaccess` file:
+- Run the PHP builtin server in the project root:
+```bash
+/usr/bin/php -S localhost:8080
+```
+- If you want to run this for example through apache, I highly recommend to setup a `Basic Auth` using a `.htaccess` file:
 ```apacheconfig
 AuthType Basic
 AuthName "Simple Image Labeler"
@@ -37,8 +41,8 @@ Require valid-user
 
 ### What this software does
 First, it takes the original file from `SOURCE_DIR`, **moves** it to 
-`TARGET_DIR`/`cat/orig`. Then if the images has been cropped and/or rotated,
-the new images is created at `TARGET_DIR`/`cat/crop`.
+`TARGET_DIR`/`cat/orig`. Then if the image has been cropped and/or rotated,
+the new image is created at `TARGET_DIR`/`cat/crop`.
 
 
 ### Disclaimer
