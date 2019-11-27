@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
     };
-    var cropper = new Cropper(image,options);
+    var cropper = new Cropper(image, options);
     populateImgInfo();
     // Buttons
     document.getElementById('save').onclick = function () {
@@ -67,6 +67,18 @@ window.addEventListener('DOMContentLoaded', function () {
                 break;
             case '5':
                 set_cat(5);
+                break;
+            case '6':
+                set_cat(6);
+                break;
+            case '7':
+                set_cat(7);
+                break;
+            case '8':
+                set_cat(8);
+                break;
+            case '9':
+                set_cat(9);
         }
     };
 
@@ -99,7 +111,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     clearCatTable();
                     retrieve_image();
                 },
-                error: function (data){
+                error: function (data) {
                     console.log(data);
                     showMessage('error', data.responseJSON.error);
                 }
@@ -135,6 +147,10 @@ window.addEventListener('DOMContentLoaded', function () {
      * @param cat
      */
     function set_cat(cat) {
+        if (cat_name[cat - 1] === undefined) {
+            showMessage('error', 'Undefined category');
+            return;
+        }
         console.log('Set category to: ' + cat_name[cat - 1]);
         clearCatTable();
         document.getElementById('cat_' + (cat - 1)).style.backgroundColor = 'green';
@@ -217,7 +233,7 @@ function set_resolution($x, $y) {
     if (rel_val > 1.0) {
         cell.style.backgroundColor = 'green';
     } else {
-        cell.style.backgroundColor = perc2color(rel_val*100);
+        cell.style.backgroundColor = perc2color(rel_val * 100);
     }
 
 }
@@ -225,7 +241,7 @@ function set_resolution($x, $y) {
 function set_copy($copy) {
     let cell = document.getElementById('img_copy');
     cell.innerHTML = $copy;
-    if ($copy){
+    if ($copy) {
         cell.style.backgroundColor = 'red';
     } else {
         cell.style.backgroundColor = 'green';
