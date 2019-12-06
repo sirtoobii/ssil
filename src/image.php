@@ -72,7 +72,8 @@ function getNextFile()
             'mime' => $img_info['mime'],
             'error' => 'none',
             'is_copy' => (strpos($file, 'copy') !== false) ? true : false,
-            'img_url' => $CONFIG['PROTO'] . $_SERVER['HTTP_HOST'] . '/api.php?c=get_image&filename=' . $file
+            'img_url' => $CONFIG['PROTO'] . $_SERVER['HTTP_HOST'] . '/api.php?c=get_image&filename=' . $file,
+            'file_count' => getFileCount($CONFIG['SOURCE_DIR'])
         );
     } else {
         return array(
@@ -82,7 +83,8 @@ function getNextFile()
             'mime' => 0,
             'error' => 'Either not an image file or no files left filename: ' . $file,
             'is_copy' => false,
-            'img_url' => 'none'
+            'img_url' => 'none',
+            'file_count' => getFileCount($CONFIG['SOURCE_DIR'])
         );
     }
 }
@@ -133,4 +135,15 @@ function prepareDirs()
             mkdir($CONFIG['TARGET_DIR'] . $cat . '/crop', 0777, true);
         }
     }
+}
+
+function getFileCount(string $directory)
+{
+
+    if ($files = glob($directory . '*')) {
+        return count($files);
+    } else {
+        return -1;
+    }
+
 }

@@ -17,6 +17,7 @@
             'is_copy': <?php echo $context['current_image']['is_copy']?>,
             'img_x': <?php echo $context['current_image']['img_x']?>,
             'img_y': <?php echo $context['current_image']['img_y']?>,
+            'file_count':<?php echo $context['current_image']['file_count']?>,
             'category': 'none',
             'changed': false,
             'clear': function () {
@@ -63,6 +64,10 @@
             <tr>
                 <td>Crop resolution</td>
                 <td id="crop_res"></td>
+            </tr>
+            <tr>
+                <td>File count</td>
+                <td id="file_count"></td>
             </tr>
         </table>
         <p>

@@ -52,7 +52,8 @@ function generateContext()
         'url' => $next_image['img_url'],
         'is_copy' => ($next_image['is_copy']) ? 'true' : 'false',
         'img_x' => $next_image['img_x'],
-        'img_y' => $next_image['img_y']
+        'img_y' => $next_image['img_y'],
+        'file_count' => getFileCount($CONFIG['SOURCE_DIR'])
     );
 
 }

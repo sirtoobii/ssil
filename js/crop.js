@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let crop_res = document.getElementById('crop_res');
     var options = {
         movable: false,
-        zoomable: false,
+        zoomable: true,
         rotatable: true,
         autoCrop: false,
         scalable: false,
@@ -172,6 +172,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 current_image.img_y = data.img_y;
                 current_image.is_copy = data.is_copy;
                 current_image.changed = false;
+                current_image.file_count = data.file_count;
                 cropper.replace(current_image.url);
                 populateImgInfo();
             },
@@ -195,6 +196,7 @@ window.addEventListener('DOMContentLoaded', function () {
         set_title(current_image.name);
         set_resolution(current_image.img_x, current_image.img_y);
         set_copy(current_image.is_copy);
+        set_filecount(current_image.file_count);
     }
 });
 
@@ -219,6 +221,10 @@ function duplicateImage($filename) {
  */
 function set_title($title) {
     document.getElementById("title_img").innerHTML = $title;
+}
+
+function set_filecount($count) {
+    document.getElementById("file_count").innerHTML = $count;
 }
 
 
